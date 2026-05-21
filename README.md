@@ -1,29 +1,45 @@
-# hi
+# acilox
 
-Data engineer. Most of my work sits between operational systems and the
-warehouse — pipelines, integrations, light orchestration, and the
-boring-but-important stuff like reconciliation, masking, and DQ gates.
+A small team that builds data infrastructure — pipelines, integrations,
+and operator tooling — for product and analytics teams.
 
-Most of what I write is in Python. I lean on Snowflake, Airflow, Kafka,
-Postgres and the usual cloud stores; I've been doing more with Flask and
-Streamlit when the operators need a UI.
+The repositories here are open-source reference implementations of the
+patterns we keep building for clients across financial services,
+healthcare, retail and logistics. They are deliberately self-contained:
+small enough to read end-to-end, complete enough to deploy with real
+credentials, and structured the way we structure code on paid work.
 
 ## Data engineering
 
-- **[multi-source-finance-etl](https://github.com/acilox/multi-source-finance-etl)** — Oracle / SFTP / REST APIs / Postgres → Snowflake; fraud scoring + SOX checks
-- **[healthcare-data-integration](https://github.com/acilox/healthcare-data-integration)** — FHIR / HL7 / EDI 837/835 → ADLS + Postgres + Elasticsearch with HIPAA Safe-Harbor masking
-- **[realtime-commerce-analytics](https://github.com/acilox/realtime-commerce-analytics)** — Kafka clickstream + Airflow batch; sessions, CLV, funnels
-- **[supply-chain-warehouse](https://github.com/acilox/supply-chain-warehouse)** — SAP / Oracle WMS / MQTT into a Kimball star schema; OTIF + demand-forecast features
-- **[cross-cloud-data-sync](https://github.com/acilox/cross-cloud-data-sync)** — pluggable connectors + Flask UI for moving data between clouds
+- **[multi-source-finance-etl](https://github.com/acilox/multi-source-finance-etl)** — Oracle / SFTP / REST APIs / Postgres into Snowflake; fraud scoring and SOX checks
+- **[healthcare-data-integration](https://github.com/acilox/healthcare-data-integration)** — FHIR / HL7 / EDI 837–835 into ADLS + Postgres + Elasticsearch, with HIPAA Safe-Harbor masking and a master patient index
+- **[realtime-commerce-analytics](https://github.com/acilox/realtime-commerce-analytics)** — Kafka speed layer + Airflow batch for sessions, CLV and funnel analytics (Lambda-style)
+- **[supply-chain-warehouse](https://github.com/acilox/supply-chain-warehouse)** — SAP / Oracle WMS / MQTT into a Snowflake Kimball star schema, with KPI and demand-forecast feature layers
+- **[cross-cloud-data-sync](https://github.com/acilox/cross-cloud-data-sync)** — pluggable connector framework (S3 / Azure / BigQuery / Snowflake / Postgres / Oracle) with a Flask UI and CDC support
 
-## AI automations
+## AI tooling and automations
 
-Coming soon — agentic workflows, LLM-assisted tooling, etc.
+In progress. Agentic workflows, LLM-assisted operators, structured
+output pipelines.
 
-## Connections / integrations
+## Connections and integrations
 
-Coming soon — Alteryx ↔ Python bridges, API clients, ETL adapters.
+In progress. Adapters and bridges between Alteryx, Python, and common
+SaaS APIs.
 
-## Reach
+## Working with us
 
-- email: `dkumar191 [at] users.noreply.github.com`
+These repositories are MIT-licensed — fork them, lift patterns, deploy
+them in your stack.
+
+For paid engagements — implementation, hardening, extending these
+patterns to your environment, or building something custom — open an
+issue on the most relevant repository and we'll route from there.
+
+Typical engagements:
+
+- Data platform builds and rebuilds (warehouse, lake, lakehouse)
+- Source-to-target integration projects (databases, SaaS, EDI/FHIR/HL7)
+- Real-time pipelines (Kafka / streaming) wired into existing batch stacks
+- Operator UIs for ETL operations teams
+- Migration off legacy ETL tools (Alteryx, Informatica, SSIS) onto Python
